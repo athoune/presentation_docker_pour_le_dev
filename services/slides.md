@@ -11,7 +11,7 @@ Dans une autre fenêtre
     $ boot2docker ip
     $ redis-cli -h 192.168.59.103
 
-Je peux l'arreter et le relancer
+Je peux l'arrêter et le relancer
 
     $ docker stop redis_classique
     $ docker start redis_classique
@@ -40,11 +40,11 @@ Quelques ajouts dans le code, de la configuration en ENV, et c'est parti!
     export STATSD_HOST=192.168.59.103
 
 !SLIDE
-# Je veux Mon Code, dans un environement comme la prod
+# Je veux Mon Code, dans un environnement comme la prod
 
 Je voudrais voir comment se comporte mon code dans un environnement un peu farfelu : du [HHVM](https://github.com/nikolaplejic/docker.hhvm)
 
-Comme je n'ai pas confiance, et que l'image n'est pas dispo sur le hub, je la construit :
+Comme je n'ai pas confiance, et que l'image n'est pas dispo sur le hub, je la construis :
 
     docker build -t hhvm .
 
@@ -55,3 +55,16 @@ Depuis le dossier contenant mon code, je lance :
 Finalement, je compare avec l'[image officielle de PHP](https://registry.hub.docker.com/_/php/):
 
     docker run --rm -p 8080:80 -v `pwd`:/var/www/html:ro php:5.6-apache
+
+!SLIDE
+# La suite
+
+Docker s'organise par services, que l'on branche ensemble.
+
+Docker se paramètre.
+
+Docker se brime.
+
+Pour centraliser tout ça, pour l'instant, la réponse est "fig", mais ça bouge!
+
+
