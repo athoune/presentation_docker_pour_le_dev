@@ -38,3 +38,20 @@ Les données métiers vont être poussées via Statsd, sur un InfluxDB, et déco
 Quelques ajouts dans le code, de la configuration en ENV, et c'est parti!
 
     export STATSD_HOST=192.168.59.103
+
+!SLIDE
+# Je veux Mon Code, dans un environement comme la prod
+
+Je voudrais voir comment se comporte mon code dans un environnement un peu farfelu : du [HHVM](https://github.com/nikolaplejic/docker.hhvm)
+
+Comme je n'ai pas confiance, et que l'image n'est pas dispo sur le hub, je la construit :
+
+    docker build -t hhvm .
+
+Depuis le dossier contenant mon code, je lance :
+
+    docker run --rm -p 8080:80 -v `pwd`:/mnt/hhvm:ro hhvm
+
+Finalement, je compare avec l'[image officielle de PHP](https://registry.hub.docker.com/_/php/):
+
+    docker run --rm -p 8080:80 -v `pwd`:/var/www/html:ro php:5.6-apache
