@@ -9,9 +9,7 @@ import feedparser
 
 from statsd.defaults.env import statsd
 
-def wget(url, name=None):
-    if name is None:
-        name= url.split('/')[-1]
+def wget(url):
     d = urllib2.urlopen(url)
     with open(name, 'w') as f:
         f.write(d.read())
@@ -28,8 +26,5 @@ def slurp(entry):
     statsd.decr('workers')
 
 ffffound = feedparser.parse('http://feeds.feedburner.com/ffffound/everyone')
-s = []
-for entry in ffffound.entries:
-    s.append(gevent.spawn(slurp, entry))
-
+s = [gevent.spawn(slurp, entry) for entry in ffffound.entries]
 gevent.wait(s)
