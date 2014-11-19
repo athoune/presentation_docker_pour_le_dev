@@ -35,6 +35,8 @@ Maintenir des compteurs dans une technologie synchrone est une punition, autant 
 
 Les données métiers vont être poussées via Statsd, sur un InfluxDB, et découverte via Grafana.
 
+    docker run -p 8125:8125/udp -p 80:80 timeseries
+
 Quelques ajouts dans le code, de la configuration en ENV, et c'est parti!
 
     export STATSD_HOST=192.168.59.103
