@@ -3,6 +3,7 @@
     "theme": "memories",
     "duration": 20,
     "sections": {
-        "main": ""
+        "main": "Etudions le dev dans son habitat naturel",
+        "services": "Services as a Docker"
     }
 }
