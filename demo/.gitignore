@@ -1,4 +1,6 @@
 *.jpg
+*.png
+*.iso
 bin
 lib
 include
